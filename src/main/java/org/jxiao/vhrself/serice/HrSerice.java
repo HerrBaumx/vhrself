@@ -1,0 +1,25 @@
+package org.jxiao.vhrself.serice;
+
+import org.jxiao.vhrself.mapper.HrMapper;
+import org.jxiao.vhrself.model.Hr;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+@Service
+public class HrSerice implements UserDetailsService {
+
+    @Autowired
+    HrMapper hrMapper;
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Hr hr = hrMapper.loadUserByUsername(username);
+        if (hr == null) {
+            throw new UsernameNotFoundException("用户名不存在！");
+        }
+
+        return hr;
+    }
+}
