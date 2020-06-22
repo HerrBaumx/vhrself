@@ -21,6 +21,17 @@ public class Menu {
     private Boolean enabled;
 
     private Meta meta;
+    private List<Menu> children;
+
+    private List<Role> roles;
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
 
     public Meta getMeta() {
         return meta;
@@ -37,9 +48,6 @@ public class Menu {
     public void setChildren(List<Menu> children) {
         this.children = children;
     }
-
-    private List<Menu> children;
-
 
     public Integer getId() {
         return id;

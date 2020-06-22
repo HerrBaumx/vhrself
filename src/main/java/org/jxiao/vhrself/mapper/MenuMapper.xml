@@ -36,6 +36,25 @@
 
         </collection>
     </resultMap>
+
+    <resultMap id="MenuWithRole" type="org.jxiao.vhrself.model.Menu" extends="BaseResultMap">
+        <collection property="roles" ofType="org.jxiao.vhrself.model.Role">
+            <id column="rid" property="id"/>
+            <result column="rname" property="name"/>
+            <result column="rnameZh" property="nameZh"/>
+        </collection>
+    </resultMap>
+    <select id="getAllMenusWithRole" resultMap="MenuWithRole">
+        select m.*, r.id as rid, r.name as rname, r.nameZh as rnameZh
+        from menu_role mr,
+             menu m,
+             role r
+        where m.id = mr.mid
+          and mr.rid = r.id
+        order by m.id
+        
+    </select>
+
     <select id="getMenuByHrId" resultMap="Menus2">
         select distinct m1.*,
                         m2.id          as id2,
