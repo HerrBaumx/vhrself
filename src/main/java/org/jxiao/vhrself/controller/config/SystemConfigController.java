@@ -1,4 +1,4 @@
-package org.jxiao.vhrself.controller;
+package org.jxiao.vhrself.controller.config;
 
 import org.jxiao.vhrself.model.Menu;
 import org.jxiao.vhrself.serice.MenuService;
