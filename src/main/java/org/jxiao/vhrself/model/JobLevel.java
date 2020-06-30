@@ -2,16 +2,14 @@ package org.jxiao.vhrself.model;
 
 import java.util.Date;
 
-public class JObLevel {
+public class JobLevel {
     private Integer id;
 
     private String name;
 
-    private String titlelevel;
+    private String titleLevel;
 
-    private Date createdate;
-
-    private Boolean enabled;
+    private Date createDate;
 
     public Integer getId() {
         return id;
@@ -26,23 +24,23 @@ public class JObLevel {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
-    public String getTitlelevel() {
-        return titlelevel;
+    public String getTitleLevel() {
+        return titleLevel;
     }
 
-    public void setTitlelevel(String titlelevel) {
-        this.titlelevel = titlelevel == null ? null : titlelevel.trim();
+    public void setTitleLevel(String titleLevel) {
+        this.titleLevel = titleLevel;
     }
 
-    public Date getCreatedate() {
-        return createdate;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setCreatedate(Date createdate) {
-        this.createdate = createdate;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
     public Boolean getEnabled() {
@@ -52,4 +50,7 @@ public class JObLevel {
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
     }
+
+    private Boolean enabled;
+
 }
