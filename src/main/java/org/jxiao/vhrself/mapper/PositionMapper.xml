@@ -11,6 +11,7 @@
     id, name, createDate, enabled
   </sql>
 
+
     <select id="getAllPositions" resultMap="BaseResultMap">
     select * from position
   </select>
@@ -24,6 +25,15 @@
     delete from position
     where id = #{id,jdbcType=INTEGER}
   </delete>
+
+    <delete id="deletePositionsByIds" >
+        delete from position where id in 
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+
+    </delete>
+
     <insert id="insert" parameterType="org.jxiao.vhrself.model.Position">
     insert into position (id, name, createDate, 
       enabled)

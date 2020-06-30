@@ -1,5 +1,6 @@
 package org.jxiao.vhrself.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import org.jxiao.vhrself.model.Position;
 
 import java.util.List;
@@ -18,4 +19,6 @@ public interface PositionMapper {
     int updateByPrimaryKey(Position record);
 
     List<Position> getAllPositions();
+
+    Integer deletePositionsByIds(@Param("ids") Integer[] ids);
 }
