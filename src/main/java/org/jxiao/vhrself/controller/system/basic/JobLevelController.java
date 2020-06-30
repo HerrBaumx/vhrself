@@ -38,7 +38,7 @@ public class JobLevelController {
 
     }
 
-    @DeleteMapping("/")
+    @DeleteMapping("/{id}")
     public RespBean deleteJobLevelById(@PathVariable Integer id){
         if (jobLevelService.deleteJobLevelById(id) == 1) {
             return RespBean.ok("删除成功！");
