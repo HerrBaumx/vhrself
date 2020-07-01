@@ -21,6 +21,14 @@
     from joblevel
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <delete id="deleteJobLevelsByIds">
+    delete from joblevel where id in
+    <foreach collection="ids" item="id" separator="," open="(" close=")">
+      #{id}
+    </foreach>
+  </delete>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from joblevel
     where id = #{id,jdbcType=INTEGER}

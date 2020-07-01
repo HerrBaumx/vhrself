@@ -1,5 +1,6 @@
 package org.jxiao.vhrself.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import org.jxiao.vhrself.model.JobLevel;
 
 import java.util.List;
@@ -19,4 +20,5 @@ public interface JobLevelMapper {
 
     List<JobLevel> getAllJobLevels();
 
+    Integer deleteJobLevelsByIds(@Param("ids") Integer[] ids);
 }
