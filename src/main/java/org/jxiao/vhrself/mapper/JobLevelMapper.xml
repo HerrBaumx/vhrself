@@ -16,7 +16,7 @@
     select * from joblevel
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from joblevel
     where id = #{id,jdbcType=INTEGER}
