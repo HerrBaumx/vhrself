@@ -1,6 +1,8 @@
 package org.jxiao.vhrself.controller.system.basic;
 
+import org.jxiao.vhrself.model.Menu;
 import org.jxiao.vhrself.model.Role;
+import org.jxiao.vhrself.serice.MenuService;
 import org.jxiao.vhrself.serice.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +17,16 @@ public class PermissController {
 
     @Autowired
     RoleService roleService;
+
+    @Autowired
+    MenuService menuService;
     @GetMapping("/")
     public List<Role> getAllRoles() {
         return roleService.getAllRoles();
+    }
+
+    @GetMapping("/menus")
+    public List<Menu> getAllMenus(){
+        return menuService.getAllMenus();
     }
 }
