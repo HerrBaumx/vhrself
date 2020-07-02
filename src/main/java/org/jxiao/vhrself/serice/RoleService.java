@@ -23,4 +23,10 @@ public class RoleService {
         }
         return roleMapper.insert(role);
     }
+
+    public Integer deleteRoleById(Integer rid) {
+
+        return roleMapper.deleteByPrimaryKey(rid);
+    }
+
 }
