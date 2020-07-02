@@ -26,7 +26,7 @@
   <insert id="insert" parameterType="org.jxiao.vhrself.model.Role" >
     insert into role (id, name, nameZh
       )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{namezh,jdbcType=VARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{nameZh,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="org.jxiao.vhrself.model.Role" >
@@ -38,7 +38,7 @@
       <if test="name != null" >
         name,
       </if>
-      <if test="namezh != null" >
+      <if test="nameZh != null" >
         nameZh,
       </if>
     </trim>
@@ -49,8 +49,8 @@
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="namezh != null" >
-        #{namezh,jdbcType=VARCHAR},
+      <if test="nameZh != null" >
+        #{nameZh,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -60,8 +60,8 @@
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="namezh != null" >
-        nameZh = #{namezh,jdbcType=VARCHAR},
+      <if test="nameZh != null" >
+        nameZh = #{nameZh,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -69,7 +69,7 @@
   <update id="updateByPrimaryKey" parameterType="org.jxiao.vhrself.model.Role" >
     update role
     set name = #{name,jdbcType=VARCHAR},
-      nameZh = #{namezh,jdbcType=VARCHAR}
+      nameZh = #{nameZh,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

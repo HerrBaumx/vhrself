@@ -19,13 +19,14 @@ public class PermissController {
 
     @Autowired
     MenuService menuService;
+
     @GetMapping("/")
     public List<Role> getAllRoles() {
         return roleService.getAllRoles();
     }
 
     @GetMapping("/menus")
-    public List<Menu> getAllMenus(){
+    public List<Menu> getAllMenus() {
         return menuService.getAllMenus();
     }
 
@@ -42,4 +43,13 @@ public class PermissController {
         }
         return RespBean.error("跟新失败！");
     }
+
+    @PostMapping("/role")
+    public RespBean addRole(@RequestBody Role role) {
+        if (roleService.addRole(role) == 1) {
+            return RespBean.ok("添加成功！");
+        }
+        return RespBean.error("添加失败！");
+    }
+
 }

@@ -12,7 +12,15 @@ public class RoleService {
 
     @Autowired
     RoleMapper roleMapper;
+
     public List<Role> getAllRoles() {
         return roleMapper.getAllRoles();
+    }
+
+    public Integer addRole(Role role) {
+        if (!role.getName().startsWith("ROLE_")) {
+            role.setName("ROLE_" + role.getName());
+        }
+        return roleMapper.insert(role);
     }
 }
