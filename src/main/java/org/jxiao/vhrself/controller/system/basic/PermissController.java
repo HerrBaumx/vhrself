@@ -1,13 +1,12 @@
 package org.jxiao.vhrself.controller.system.basic;
 
 import org.jxiao.vhrself.model.Menu;
+import org.jxiao.vhrself.model.RespBean;
 import org.jxiao.vhrself.model.Role;
 import org.jxiao.vhrself.serice.MenuService;
 import org.jxiao.vhrself.serice.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +27,19 @@ public class PermissController {
     @GetMapping("/menus")
     public List<Menu> getAllMenus(){
         return menuService.getAllMenus();
+    }
+
+    @GetMapping("/mids/{rid}")
+    public List<Integer> getMidsByRid(@PathVariable Integer rid) {
+        return menuService.getMidsByRid(rid);
+
+    }
+
+    @PutMapping("/")
+    public RespBean updateMenuRole(Integer rid, Integer[] mids) {
+        if (menuService.updateMenuRole(rid, mids)) {
+            return RespBean.ok("跟新成功！");
+        }
+        return RespBean.error("跟新失败！");
     }
 }
