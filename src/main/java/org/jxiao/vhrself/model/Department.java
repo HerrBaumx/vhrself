@@ -1,5 +1,6 @@
 package org.jxiao.vhrself.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Department {
@@ -14,6 +15,8 @@ public class Department {
     private Boolean enabled;
 
     private Boolean isParent;
+    private List<Department> children = new ArrayList<>();
+    private Integer result;
 
     public Integer getId() {
         return id;
@@ -27,7 +30,17 @@ public class Department {
         return name;
     }
 
-    public List<Department> children;
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
+
+    public Integer getResult() {
+        return result;
+    }
+
+    public void setResult(Integer result) {
+        this.result = result;
+    }
 
     public List<Department> getChildren() {
         return children;
@@ -60,11 +73,6 @@ public class Department {
     public void setParent(Boolean parent) {
         isParent = parent;
     }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
 
     public Boolean getEnabled() {
         return enabled;
