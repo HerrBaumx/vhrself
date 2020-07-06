@@ -1,5 +1,6 @@
 package org.jxiao.vhrself.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -110,6 +111,7 @@ public class Hr implements UserDetails {
     }
 
     @Override
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
         List<SimpleGrantedAuthority> authorities = new ArrayList<>(roles.size());
