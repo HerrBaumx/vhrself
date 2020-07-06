@@ -42,6 +42,7 @@
              left join hr_role on hr.id = hr_role.hrid
              left join role r on hr_role.rid = r.id
     where hr.id != #{hrid}
+    order by hr.id
   </select>
   <select id="getHrRolesById" resultType="org.jxiao.vhrself.model.Role">
     select r.*

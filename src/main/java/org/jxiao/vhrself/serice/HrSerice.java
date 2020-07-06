@@ -1,6 +1,7 @@
 package org.jxiao.vhrself.serice;
 
 import org.jxiao.vhrself.mapper.HrMapper;
+import org.jxiao.vhrself.mapper.HrRoleMapper;
 import org.jxiao.vhrself.model.Hr;
 import org.jxiao.vhrself.utils.HrUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,6 +18,10 @@ public class HrSerice implements UserDetailsService {
 
     @Autowired
     HrMapper hrMapper;
+
+    @Autowired
+    HrRoleMapper hrRoleMapper;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Hr hr = hrMapper.loadUserByUsername(username);
@@ -33,5 +39,12 @@ public class HrSerice implements UserDetailsService {
 
     public Integer updateHr(Hr hr) {
         return hrMapper.updateByPrimaryKeySelective(hr);
+    }
+
+    @Transactional
+    public boolean updateHrRoles(Integer hrid, Integer[] rids) {
+
+        hrRoleMapper.deleteByHrid(hrid);
+        return hrRoleMapper.addRoles(hrid,rids)==rids.length;
     }
 }
