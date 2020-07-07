@@ -19,7 +19,7 @@ public class EmpBasicController {
 
     @GetMapping("/")
     public RespPageBean getEmployeeByPage(@RequestParam(defaultValue = "1") Integer page,
-                                          @RequestParam(defaultValue = "1") Integer size) {
+                                          @RequestParam(defaultValue = "10") Integer size) {
 
         return employeeService.getEmployeeByPage(page, size);
     }
