@@ -21,8 +21,8 @@ public class HrController {
     RoleService roleService;
 
     @GetMapping("/")
-    public List<Hr> getAllHrs() {
-        return hrSerice.getAllHrs();
+    public List<Hr> getAllHrs(String keywords) {
+        return hrSerice.getAllHrs(keywords);
     }
 
     @PutMapping("/")

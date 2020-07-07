@@ -1,5 +1,6 @@
 package org.jxiao.vhrself.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import org.jxiao.vhrself.model.Hr;
 import org.jxiao.vhrself.model.Role;
 
@@ -22,5 +23,5 @@ public interface HrMapper {
 
     List<Role> getHrRolesById(Integer id);
 
-    List<Hr> getAllHrs(Integer hrid);
+    List<Hr> getAllHrs(@Param("hrid") Integer hrid, @Param("keywords") String keywords);
 }

@@ -33,8 +33,8 @@ public class HrSerice implements UserDetailsService {
         return hr;
     }
 
-    public List<Hr> getAllHrs() {
-        return hrMapper.getAllHrs(HrUtils.getCurrentHr().getId());
+    public List<Hr> getAllHrs(String keywords) {
+        return hrMapper.getAllHrs(HrUtils.getCurrentHr().getId(),keywords);
     }
 
     public Integer updateHr(Hr hr) {
