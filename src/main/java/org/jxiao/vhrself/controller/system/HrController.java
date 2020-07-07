@@ -45,4 +45,12 @@ public class HrController {
         }
         return RespBean.error("更新失败！");
     }
+
+    @DeleteMapping("/{id}")
+    public RespBean deleteHrById(@PathVariable Integer id) {
+        if (hrSerice.deleteHrById(id) == 1) {
+            return RespBean.ok("删除成功！");
+        }
+        return RespBean.error("删除失败！");
+    }
 }

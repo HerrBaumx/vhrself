@@ -47,4 +47,8 @@ public class HrSerice implements UserDetailsService {
         hrRoleMapper.deleteByHrid(hrid);
         return hrRoleMapper.addRoles(hrid,rids)==rids.length;
     }
+
+    public Integer deleteHrById(Integer id) {
+        return hrMapper.deleteByPrimaryKey(id);
+    }
 }
