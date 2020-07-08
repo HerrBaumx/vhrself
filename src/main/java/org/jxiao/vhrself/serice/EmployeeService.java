@@ -25,4 +25,9 @@ public class EmployeeService {
         bean.setTotal(total);
         return bean;
     }
+
+    public Integer addEmp(Employee employee) {
+        return employeeMapper.insertSelective(employee);
+    }
+
 }
