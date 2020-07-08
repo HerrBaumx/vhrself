@@ -19,9 +19,9 @@ public class EmpBasicController {
 
     @GetMapping("/")
     public RespPageBean getEmployeeByPage(@RequestParam(defaultValue = "1") Integer page,
-                                          @RequestParam(defaultValue = "10") Integer size) {
+                                          @RequestParam(defaultValue = "10") Integer size,String keyword) {
 
-        return employeeService.getEmployeeByPage(page, size);
+        return employeeService.getEmployeeByPage(page, size,keyword);
     }
 
 }

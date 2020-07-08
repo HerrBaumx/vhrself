@@ -63,32 +63,38 @@
 
     <select id="getTotal" resultType="java.lang.Long">
         select count(*) from employee
+        <if test="keyword != null and keyword != ''">
+            where name like concat('%',#{keyword},'%')
+        </if>
     </select>
     <select id="getEmployeeByPage" resultMap="AllEmployeeInfo">
         select e.*,
-           n.id as nid,
-           n.name as nname,
-           p.id as pid,
-           p.name as pname,
-           d.id as did,
-           d.name as dname,
-           pos.id as posid,
-           pos.name as posname,
-           j.id as jid,
-           j.name as jname
+        n.id as nid,
+        n.name as nname,
+        p.id as pid,
+        p.name as pname,
+        d.id as did,
+        d.name as dname,
+        pos.id as posid,
+        pos.name as posname,
+        j.id as jid,
+        j.name as jname
         from employee e,
-             nation n,
-             politicsstatus p,
-             department d,
-             position pos,
-             joblevel j
+        nation n,
+        politicsstatus p,
+        department d,
+        position pos,
+        joblevel j
         where e.nationId = n.id
-          and e.politicId = p.id
-          and e.departmentId = d.id
-          and e.posId = pos.id
-          and e.jobLevelId = j.id
-          limit #{page} ,#{size}
-  </select>
+        and e.politicId = p.id
+        and e.departmentId = d.id
+        and e.posId = pos.id
+        and e.jobLevelId = j.id
+        <if test="keyword != null and keyword != ''">
+            and e.name like concat('%',#{keyword},'%')
+        </if>
+        limit #{page} ,#{size}
+    </select>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
         <include refid="Base_Column_List"/>
