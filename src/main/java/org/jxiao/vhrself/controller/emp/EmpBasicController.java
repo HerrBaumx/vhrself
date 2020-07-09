@@ -1,11 +1,11 @@
 package org.jxiao.vhrself.controller.emp;
 
-import org.jxiao.vhrself.model.Employee;
-import org.jxiao.vhrself.model.RespBean;
-import org.jxiao.vhrself.model.RespPageBean;
-import org.jxiao.vhrself.serice.EmployeeService;
+import org.jxiao.vhrself.model.*;
+import org.jxiao.vhrself.serice.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/emp/basic")
@@ -13,6 +13,18 @@ public class EmpBasicController {
 
     @Autowired
     EmployeeService employeeService;
+
+    @Autowired
+    NationService nationService;
+
+    @Autowired
+    PoliticsstatusService politicsstatusService;
+
+    @Autowired
+    JobLevelService jobLevelService;
+
+    @Autowired
+    PositionService positionService;
 
     @GetMapping("/")
     public RespPageBean getEmployeeByPage(@RequestParam(defaultValue = "1") Integer page,
@@ -29,4 +41,23 @@ public class EmpBasicController {
         return RespBean.error("添加失败！");
     }
 
+    @GetMapping("/nations")
+    public List<Nation> getAllNations() {
+        return nationService.getAllNations();
+    }
+
+    @GetMapping("/politicsstatus")
+    public List<Politicsstatus> getAllPoliticsstatus() {
+        return politicsstatusService.getAllPoliticsstatus();
+    }
+
+    @GetMapping("/joblevels")
+    public List<JobLevel> getAllJobLevels() {
+        return jobLevelService.getAllJobLevels();
+    }
+
+    @GetMapping("/positions")
+    public List<Position> getAllPositions() {
+        return positionService.getAllPositions();
+    }
 }
