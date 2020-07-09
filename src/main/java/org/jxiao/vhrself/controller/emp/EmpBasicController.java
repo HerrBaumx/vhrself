@@ -60,4 +60,12 @@ public class EmpBasicController {
     public List<Position> getAllPositions() {
         return positionService.getAllPositions();
     }
+
+    @GetMapping("/maxWorkID")
+    public RespBean maxWorkID() {
+        RespBean respBean = RespBean.build().setStatus(200)
+                .setObj(String.format("%08d", employeeService.maxWorkID() + 1));
+
+        return respBean;
+    }
 }
