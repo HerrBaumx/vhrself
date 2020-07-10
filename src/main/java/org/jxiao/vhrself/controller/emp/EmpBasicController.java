@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/emp/basic")
+@RequestMapping("/employee/basic")
 public class EmpBasicController {
 
     @Autowired
@@ -76,5 +76,13 @@ public class EmpBasicController {
     @GetMapping("/deps")
     public List<Department> getAllDepartments() {
         return departmentService.getAllDepartments();
+    }
+
+    @DeleteMapping("/{id}")
+    public RespBean deleteEmpByEid(@PathVariable Integer id) {
+        if (employeeService.deleteEmpByEid(id) == 1) {
+            return RespBean.ok("删除成功！");
+        }
+        return RespBean.error("删除失败！");
     }
 }
