@@ -85,4 +85,12 @@ public class EmpBasicController {
         }
         return RespBean.error("删除失败！");
     }
+
+    @PutMapping("/")
+    public RespBean updateEmp(@RequestBody Employee employee) {
+        if (employeeService.updateEmp(employee) == 1) {
+            return RespBean.ok("跟新成功！");
+        }
+        return RespBean.error("更新失败！");
+    }
 }
