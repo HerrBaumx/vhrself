@@ -1,5 +1,6 @@
 package org.jxiao.vhrself.controller.emp;
 
+import org.apache.poi.hssf.dev.ReSave;
 import org.jxiao.vhrself.model.*;
 import org.jxiao.vhrself.serice.*;
 import org.jxiao.vhrself.utils.POIUtils;
@@ -112,10 +113,11 @@ public class EmpBasicController {
         List<Employee> list = POIUtils.excel2Employee(file, nationService.getAllNations(),
                 politicsstatusService.getAllPoliticsstatus(), departmentService.getAllDepartmentsWithoutChild(),
                 positionService.getAllPositions(),jobLevelService.getAllJobLevels());
-        for (Employee employee : list) {
-            System.out.println(employee);
-        }
+        if (employeeService.addEmps(list) == list.size()) {
+
         return RespBean.ok("上传成功！");
+        }
+        return RespBean.error("上传失败！");
     }
 
 }
