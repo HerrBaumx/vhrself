@@ -107,7 +107,14 @@ public class EmpBasicController {
 
     @PostMapping("/import")
     public RespBean importData(MultipartFile file) throws IOException {
-        file.transferTo(new File("C:\\Users\\JXiao\\Desktop\\jxiao.xls"));
+        //file.transferTo(new File("C:\\Users\\JXiao\\Desktop\\jxiao.xls"));
+
+        List<Employee> list = POIUtils.excel2Employee(file, nationService.getAllNations(),
+                politicsstatusService.getAllPoliticsstatus(), departmentService.getAllDepartmentsWithoutChild(),
+                positionService.getAllPositions(),jobLevelService.getAllJobLevels());
+        for (Employee employee : list) {
+            System.out.println(employee);
+        }
         return RespBean.ok("上传成功！");
     }
 
